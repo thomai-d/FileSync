@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSync.Cli", "FileSync.Cli\FileSync.Cli.csproj", "{1911DE65-72DC-4C8B-89C6-9C9FE904B9DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSync.Domain", "FileSync.Domain\FileSync.Domain.csproj", "{49D78FB9-4694-40C0-B9D5-14577F07B667}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSync.Infrastructure", "FileSync.Infrastructure\FileSync.Infrastructure.csproj", "{93BBF8BA-1195-419B-976A-E9BAC861CE7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSync.Domain.Tests", "FileSync.Domain.Tests\FileSync.Domain.Tests.csproj", "{19709047-884A-4BF6-8C45-BF8F8E4035D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSync.Infrastructure.Tests", "FileSync.Infrastructure.Tests\FileSync.Infrastructure.Tests.csproj", "{342EC021-644F-4C99-A10A-7E1E8B4236E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1911DE65-72DC-4C8B-89C6-9C9FE904B9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1911DE65-72DC-4C8B-89C6-9C9FE904B9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1911DE65-72DC-4C8B-89C6-9C9FE904B9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1911DE65-72DC-4C8B-89C6-9C9FE904B9DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D78FB9-4694-40C0-B9D5-14577F07B667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D78FB9-4694-40C0-B9D5-14577F07B667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D78FB9-4694-40C0-B9D5-14577F07B667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D78FB9-4694-40C0-B9D5-14577F07B667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93BBF8BA-1195-419B-976A-E9BAC861CE7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93BBF8BA-1195-419B-976A-E9BAC861CE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93BBF8BA-1195-419B-976A-E9BAC861CE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93BBF8BA-1195-419B-976A-E9BAC861CE7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19709047-884A-4BF6-8C45-BF8F8E4035D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19709047-884A-4BF6-8C45-BF8F8E4035D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19709047-884A-4BF6-8C45-BF8F8E4035D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19709047-884A-4BF6-8C45-BF8F8E4035D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{342EC021-644F-4C99-A10A-7E1E8B4236E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{342EC021-644F-4C99-A10A-7E1E8B4236E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{342EC021-644F-4C99-A10A-7E1E8B4236E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{342EC021-644F-4C99-A10A-7E1E8B4236E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {817C694A-6A99-4B82-9632-925B28E2A4AC}
+	EndGlobalSection
+EndGlobal

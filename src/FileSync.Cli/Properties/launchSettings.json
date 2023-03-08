@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "FileSync.Cli": {
+      "commandName": "Project"
+    }
+  }
+}
