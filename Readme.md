@@ -38,6 +38,16 @@ Copyright (C) 2023 FileSync.Cli
 
     -o, --output        Required. Output file for diff result
 
+  reconcile  Reconciles an index by removing files that are no longer present and add existing files
+
+    -d, --DestinationPath    Required. Destination path to reconcile
+
+	-i, --ignore             Ignored file pattern (Regex)
+
+	-x, --indexFile          Required. File path for an index file to use
+
+	-c, --checksum           Generate checksums
+
 ``` 
 
 # What problems does it solve?

@@ -1,7 +1,9 @@
 ﻿using FileSync.Domain.Abstractions;
 using FileSync.Domain.Model;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +12,13 @@ namespace FileSync.Infrastructure
 {
     public class IndexWriter : IIndexWriter
     {
+        private readonly ILogger<IndexWriter> _logger;
+
+        public IndexWriter(ILogger<IndexWriter> _logger)
+        {
+            this._logger = _logger;
+        }
+
         public async Task PersistIndexAsync(FileIndex index, string filePath)
         {
             using var file = File.CreateText(filePath);
@@ -27,12 +36,18 @@ namespace FileSync.Infrastructure
 
         public async Task<FileIndex> RestoreFromFileAsync(string filePath)
         {
+            _logger.LogInformation("Restoring index {file}...", filePath);
+            var watch = Stopwatch.StartNew();
+
             using var file = File.OpenText(filePath);
 
             var basePath = await file.ReadLineAsync()
                             ?? throw new ApplicationException($"Can't find base path in {filePath}");
 
-            return new FileIndex(basePath, await RestoreFromFileCore(file).ToListAsync());
+            var index = new FileIndex(basePath, await RestoreFromFileCore(file).ToListAsync());
+            
+            _logger.LogInformation("Restoring index ({count} items, {size} MB) took {time}", index.EntryCount, index.Size/1024/1024, watch.Elapsed);
+            return index;
         }
 
         private async IAsyncEnumerable<Entry> RestoreFromFileCore(StreamReader file)

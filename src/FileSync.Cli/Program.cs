@@ -28,14 +28,15 @@ hostBuilder.ConfigureServices(services =>
     services.AddSingleton<IDiffWriter, DiffWriter>();
 
     services.AddSingleton<SynchronizeApp>();
-    services.AddSingleton<IndexApp>();
+    services.AddSingleton<ReconcileApp>();
     services.AddSingleton<VerifyApp>();
 });
 
 var app = hostBuilder.Build();
 
-var parserResult = Parser.Default.ParseArguments<SynchronizeOptions, IndexOptions, VerifyOptions>(args);
+var parserResult = Parser.Default.ParseArguments<SynchronizeOptions, ReconcileOptions, VerifyOptions, IndexOptions>(args);
 
 await parserResult.WithParsedAsync<SynchronizeOptions>(options => app.Services.GetRequiredService<SynchronizeApp>().RunAsync(options));
-await parserResult.WithParsedAsync<IndexOptions>(options => app.Services.GetRequiredService<IndexApp>().RunAsync(options));
+await parserResult.WithParsedAsync<ReconcileOptions>(options => app.Services.GetRequiredService<ReconcileApp>().RunAsync(options));
 await parserResult.WithParsedAsync<VerifyOptions>(options => app.Services.GetRequiredService<VerifyApp>().RunAsync(options));
+await parserResult.WithParsedAsync<IndexOptions>(options => app.Services.GetRequiredService<IndexApp>().RunAsync(options));

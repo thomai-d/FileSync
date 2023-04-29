@@ -11,7 +11,7 @@ namespace FileSync.Domain.Abstractions
     {
         Action<string, Exception> OnException { get; set; }
 
-        Task GenerateChecksumsAsync(FileIndex index);
+        Task GenerateChecksumsAsync(FileIndex index, bool forceRegenerateExisting);
 
         Task<string> GenerateChecksumForFileAsync(string path);
     }

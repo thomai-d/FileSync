@@ -53,7 +53,7 @@ namespace FileSync.Cli.Verify
 
             var sourceIndex = _dirEnumerator.Enumerate(options.SourcePath);
 
-            await _checksumGen.GenerateChecksumsAsync(sourceIndex);
+            await _checksumGen.GenerateChecksumsAsync(sourceIndex, forceRegenerateExisting: true);
 
             var diff = _entryComparer.Compare(sourceIndex, indexToVerify);
 

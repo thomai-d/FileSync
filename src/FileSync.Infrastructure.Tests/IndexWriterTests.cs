@@ -1,5 +1,8 @@
-﻿using FileSync.Domain.Model;
+﻿using Castle.Core.Logging;
+using FileSync.Domain.Model;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +32,7 @@ namespace FileSync.Infrastructure.Tests
                 Entry.File("file1", DateTime.Now, DateTime.Now, 500, "abc"),
                 Entry.Dir("dir1", DateTime.Now, DateTime.Now));
 
-            var target = new IndexWriter();
+            var target = new IndexWriter(new Mock<ILogger<IndexWriter>>().Object);
 
             await target.PersistIndexAsync(originalIndex, _tempFile);
 

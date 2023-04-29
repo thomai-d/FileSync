@@ -47,7 +47,7 @@ namespace FileSync.Cli.Index
 
             if (options.IsChecksumGenerationEnabled)
             {
-                await _checksumGenerator.GenerateChecksumsAsync(index);
+                await _checksumGenerator.GenerateChecksumsAsync(index, forceRegenerateExisting: true);
             }
 
             await _indexWriter.PersistIndexAsync(index, options.DestinationIndexFile);

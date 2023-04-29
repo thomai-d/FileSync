@@ -1,4 +1,5 @@
 ﻿using FileSync.Domain.Abstractions;
+using FileSync.Domain.Extensions;
 using FileSync.Domain.Model;
 using Microsoft.Extensions.Logging;
 using System;
@@ -23,12 +24,13 @@ namespace FileSync.Infrastructure
 
         public Action<string, Exception> OnException { get; set; } = delegate { };
 
-        public async Task GenerateChecksumsAsync(FileIndex index)
+        public async Task GenerateChecksumsAsync(FileIndex index, bool forceRegenerateExisting)
         {
             var watch = Stopwatch.StartNew();
 
             var fileEntries = index.Entries
                                    .Where(entry => entry.Type == EntryType.File)
+                                   .Where(entry => forceRegenerateExisting || entry.Hash.IsEmpty())
                                    .ToArray();
 
             _logger.LogInformation("Hashing {count} files...", fileEntries.Length);
@@ -56,7 +58,8 @@ namespace FileSync.Infrastructure
                 index.ReplaceEntry(entry);
             }
 
-            _logger.LogInformation("Hashing {count} files took {elapsed}", fileEntries.Length, watch.Elapsed);
+            var totalSize = fileEntries.Sum(e => e.Size) / 1024 / 1024;
+            _logger.LogInformation("Hashing {count} files ({size}MB) took {elapsed}", fileEntries.Length, totalSize, watch.Elapsed);
         }
 
         public async Task<string> GenerateChecksumForFileAsync(string path)
